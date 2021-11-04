@@ -2,7 +2,7 @@ import React from "react";
 import './styles.css'
 import Gif from "../Gif/Gif.component";
 
-export default function ListOfGif( {gifs} ) {
+export default function ListOfGif({ gifs }) {
     return (
         <div className="ListGif-Content">
             {

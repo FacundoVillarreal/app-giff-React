@@ -3,9 +3,7 @@ import './App.css';
 import Home from './pages/Home';
 import SearchResults from './pages/SearchResults';
 import Detail from './pages/Detail';
-
-// import ListOfGif from './components/ListOfGifs.components';
-// import Info from './components/Info.components'
+import StaticContext from './context/StaticContext';
 
 
 import { Link, Route } from 'wouter'
