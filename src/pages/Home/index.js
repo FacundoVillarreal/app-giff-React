@@ -3,6 +3,7 @@ import "./style.css"
 import { Link, useLocation } from "wouter";
 import ListOfGif from "../../components/ListOfGifs/ListOfGifs.components";
 import { useGifs } from "../../hooks/useGifs";
+import Spinner from "../../components/Spinner/Spinner.components";
 const POPULAR_GIFS = ["Argentina", "Colombia", "Uruguay", "Messi", "Matrix"];
 
 export default function Home() {

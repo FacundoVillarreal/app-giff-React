@@ -7,7 +7,6 @@ export default function SearchResult({ params }) {
 
     const { keyword } = params;
     const { loading, gifs } = useGifs({ keyword })
-    console.log(gifs)
 
     return (
         <>
