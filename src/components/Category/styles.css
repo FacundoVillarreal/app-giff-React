@@ -1,0 +1,13 @@
+.Trendings-content{
+    margin: auto;
+    font-size: 16px;
+    color: rgb(83, 5, 5);
+    text-transform: uppercase;
+
+}
+.Trendings-content li:hover{
+    font-size: 16px;
+    color: rgb(155, 7, 7);
+    cursor: pointer;
+    text-transform: uppercase;
+}

@@ -1,10 +1,9 @@
 import { useState } from "react";
 import "./style.css"
 import { Link, useLocation } from "wouter";
-import ListOfGif from "../../components/ListOfGifs/ListOfGifs.components";
-import { useGifs } from "../../hooks/useGifs";
-import Spinner from "../../components/Spinner/Spinner.components";
-const POPULAR_GIFS = ["Argentina", "Colombia", "Uruguay", "Messi", "Matrix"];
+import ListOfGif from "components/ListOfGifs/ListOfGifs.components";
+import { useGifs } from "hooks/useGifs";
+import LazyTrending from "components/TrendingSearches"
 
 export default function Home() {
 
@@ -31,18 +30,7 @@ export default function Home() {
             </form>
             <h3 className="App-title">Última búsqueda</h3>
             <ListOfGif gifs={gifs} />
-            <h3 className="App-title">Los gifs más populares</h3>
-            <ul>
-                {
-                    POPULAR_GIFS.map((popularGif) => (
-                        <li key={popularGif}>
-                            <Link to={`/search/${popularGif}`}>
-                                Gifs de {popularGif}
-                            </Link>
-                        </li>
-                    ))
-                }
-            </ul>
+           <LazyTrending/>
         </>
 
     )

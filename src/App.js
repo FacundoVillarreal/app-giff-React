@@ -11,20 +11,20 @@ import { GifsContextProvider } from './context/GifsContext';
 function App() {
   return (
     //toda nuestra aplicacion va a utilizar el proveedor del contexto
-      <div className="App">
-        <section className="App-content">
+    <>
+      <section className="App App-content">
 
-          <Link to="/">
-            <img className="App-logo" alt="Giphy logo" src="/giphy.png"></img>
-          </Link>
+        <Link to="/">
+          <img className="App-logo" alt="Giphy logo" src="/giphy.png"></img>
+        </Link>
 
-          <GifsContextProvider>
-            <Route component={Home} path="/" />
-            <Route component={SearchResults} path="/search/:keyword" />
-            <Route component={Detail} path="/gif/:id" />
-          </GifsContextProvider>
-        </section>
-      </div>
+      </section>
+      <GifsContextProvider>
+        <Route component={Home} path="/" />
+        <Route component={SearchResults} path="/search/:keyword" />
+        <Route component={Detail} path="/gif/:id" />
+      </GifsContextProvider>
+    </>
   );
 }
 

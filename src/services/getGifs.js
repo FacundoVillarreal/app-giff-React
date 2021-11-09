@@ -1,18 +1,22 @@
-const apiKey = "MvQHSni8ObxbNMsEpddRFm70mjx06vaV"
-const apiUrl = `https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=panda&limit=5&offset=0&rating=g&lang=en`;
+import { API_KEY, API_URL } from "./settings"
+
+const fromApiResponseToGifs = apiResponse => {
+    const { data = [] } = apiResponse;
+    if (Array.isArray(data)) {
+        const gifs = data.map(image => {
+            const { id, title, images, username } = image;
+            const { url } = images.original;
+            return { id, title, url, username };
+        });
+        return gifs;
+    }
+    return [];
+}
 
 export default function getGifs({ keyword = {} }) {
-    const apiUrl = `https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${keyword}&limit=25&offset=0&rating=g&lang=en`;
+    const apiUrl = `${API_URL}/gifs/search?api_key=${API_KEY}&q=${keyword}&limit=25&offset=0&rating=g&lang=en`;
 
     return fetch(apiUrl)
         .then(res => res.json())
-        .then(response => {
-            const { data } = response;
-            const gifs = data.map(image => {
-                const { id, title, images, username } = image;
-                const { url } = images.original;
-                return { id, title, url, username };
-            });
-            return gifs;
-        });
+        .then(fromApiResponseToGifs);
 };

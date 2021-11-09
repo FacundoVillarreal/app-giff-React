@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import Gif from "../../components/Gif/Gif.component";
-import  GifsContext  from "../../context/GifsContext"
+import Gif from "components/Gif/Gif.component";
+import  GifsContext  from "context/GifsContext"
 
 export default function Detail({ params }) {
     //queremos acceder a la info del objeto react.createContext
