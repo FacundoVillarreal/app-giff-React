@@ -1,10 +1,16 @@
 import React from "react";
 import './styles.css'
 import Gif from "../Gif/Gif.component";
-
+import Box from '@mui/material/Box';
 export default function ListOfGif({ gifs }) {
     return (
-        <div className="ListGif-Content">
+        <Box sx={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+            gap: '16px',
+            alignItems: 'center',
+            m:'0 25px'
+        }}>
             {
                 gifs.map(({ id, title, url, username }) =>
                     <Gif
@@ -12,10 +18,10 @@ export default function ListOfGif({ gifs }) {
                         key={id}
                         title={title}
                         url={url}
-                        username={username}
+                        usernafme={username}
                     />
                 )
             }
-        </div>
+        </Box>
     )
 }

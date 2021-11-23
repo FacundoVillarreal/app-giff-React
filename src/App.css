@@ -1,12 +1,8 @@
-body{
+/* body{
     background-color: #5ce1e6;
 }
 
-.App-logo{
-    margin: 0 auto;
-    width: 250px;
-    height: 250px;
-}
+
 
 .App-content img{
     display: flex;
@@ -23,4 +19,9 @@ ul li a{
 }
 ul li{
     list-style: none;
+} */
+
+.App-logo{
+    width: 250px;
+    height: 250px;
 }

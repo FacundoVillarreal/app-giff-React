@@ -5,7 +5,7 @@ const fromApiResponseToGifs = apiResponse => {
     if (Array.isArray(data)) {
         const gifs = data.map(image => {
             const { id, title, images, username } = image;
-            const { url } = images.original;
+            const { url } = images.fixed_width_downsampled;
             return { id, title, url, username };
         });
         return gifs;
@@ -13,8 +13,8 @@ const fromApiResponseToGifs = apiResponse => {
     return [];
 }
 
-export default function getGifs({ keyword = {} }) {
-    const apiUrl = `${API_URL}/gifs/search?api_key=${API_KEY}&q=${keyword}&limit=25&offset=0&rating=g&lang=en`;
+export default function getGifs({ keyword = {}, page = 0 }) {
+    const apiUrl = `${API_URL}/gifs/search?api_key=${API_KEY}&q=${keyword}&limit=25&offset=${page * 5}0&rating=g&lang=en`;
 
     return fetch(apiUrl)
         .then(res => res.json())

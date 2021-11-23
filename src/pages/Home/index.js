@@ -4,6 +4,7 @@ import { Link, useLocation } from "wouter";
 import ListOfGif from "components/ListOfGifs/ListOfGifs.components";
 import { useGifs } from "hooks/useGifs";
 import LazyTrending from "components/TrendingSearches"
+import { TextField, Box, Typography } from "@mui/material"
 
 export default function Home() {
 
@@ -20,18 +21,21 @@ export default function Home() {
         setKeyword(evt.target.value);
     }
     return (
-        <>
+        <Box>
             <form onSubmit={handleSubmit} className="Form-search">
-                <input type="text"
+                <TextField type="text"
                     value={keyword}
                     onChange={handleChange}
-                    placeholder="Search a gif here..."
-                ></input>
+                    color="warning"
+                    label="Search a gif here..."
+                ></TextField>
             </form>
-            <h3 className="App-title">Última búsqueda</h3>
+            <Typography sx={{ mt: 4, mb: 2 }} variant="h4" component="div">
+                Última búsqueda
+            </Typography>
             <ListOfGif gifs={gifs} />
-           <LazyTrending/>
-        </>
+            <LazyTrending />
+        </Box>
 
     )
 }

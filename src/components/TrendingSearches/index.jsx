@@ -1,6 +1,8 @@
 import React, { Suspense } from "react";
 import useNearScreen from "hooks/useNearScreen";
 import Spinner from "components/Spinner/Spinner.components";
+
+//React.Lazy lo utilizamos para traer el componente solo cuando lo necesitamos 
 const TrendingSearches = React.lazy(
     () => import('./TrendingSearches')
 )
