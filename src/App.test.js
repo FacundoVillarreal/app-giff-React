@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+test('search form could be used', async () => {
+    render(<App/>)
+    const input = await screen.findByRole('textbox')
+    fireEvent.change(input, {target : { value: 'Matrix'} })     
+})

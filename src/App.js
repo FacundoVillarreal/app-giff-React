@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import './App.css';
-import Home from './pages/Home';
 import SearchResults from './pages/SearchResults';
 import Detail from './pages/Detail';
 
@@ -8,13 +7,16 @@ import Detail from './pages/Detail';
 import { Link, Route } from 'wouter'
 import { GifsContextProvider } from './context/GifsContext';
 import Box from "@mui/material/Box"
+
+const homePage = React.lazy(() => import('./pages/Home'))
+
 function App() {
 
-  
+
   return (
     //toda nuestra aplicacion va a utilizar el proveedor del contexto
     <Box sx={{
-      marginLeft: 1, 
+      marginLeft: 1,
       height: "100hv"
     }}
     >
@@ -28,11 +30,13 @@ function App() {
           <img className="App-logo" alt="Giphy logo" src="/giphy.png"></img>
         </Link>
       </Box>
-
       <GifsContextProvider>
-        <Route component={Home} path="/" />
-        <Route component={SearchResults} path="/search/:keyword" />
-        <Route component={Detail} path="/gif/:id" />
+        <Suspense fallback={null}>
+          <Route component={homePage} path="/" />
+          <Route component={SearchResults} path="/search/:keyword/:rating?" />
+          <Route component={Detail} path="/gif/:id" />
+          <Route component={()=> <h1>Error 404 :v </h1>} path="/404" />
+        </Suspense>
       </GifsContextProvider>
     </Box>
   );

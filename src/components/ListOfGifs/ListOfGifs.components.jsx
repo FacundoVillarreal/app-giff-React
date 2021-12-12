@@ -12,13 +12,14 @@ export default function ListOfGif({ gifs }) {
             m:'0 25px'
         }}>
             {
-                gifs.map(({ id, title, url, username }) =>
+                gifs.map(({ id, title, url, username, ...restOfGif }) =>
                     <Gif
                         id={id}
                         key={id}
                         title={title}
                         url={url}
                         usernafme={username}
+                        extraInfo={restOfGif}
                     />
                 )
             }
